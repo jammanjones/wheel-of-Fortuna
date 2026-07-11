@@ -133,6 +133,8 @@ console.log("Drawing wheel");
     ctx.fillText("⚜",CENTER,CENTER);
 
     ctx.restore();
+}
+
 function getWinningIndex() {
 
     const slice = (Math.PI * 2) / decisions.length;
