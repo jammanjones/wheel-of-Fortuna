@@ -1,162 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lady Fortuna</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Lady Fortuna</title>
-
-<link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="container">
+<div class="app">
 
-<h1>⚜ Lady Fortuna ⚜</h1>
+    <header>
 
-<p class="subtitle">
-Let Fortune Guide Your Next Move
-</p>
+        <h1>⚜ Lady Fortuna ⚜</h1>
 
-<div class="wheel-container">
+        <p class="subtitle">
+            Let Fortune Guide Your Next Move
+        </p>
 
-<div class="pointer">
-    ⚜
-</div>
-<div class="wheel-container">
+    </header>
 
-    <div class="pointer">▼</div>
+    <main>
 
-    <svg id="wheel" class="wheel" viewBox="0 0 500 500">
-<defs>
+        <div class="wheel-wrapper">
 
-<filter id="goldGlow">
+            <div class="pointer"></div>
 
-<feGaussianBlur
-stdDeviation="5"
-result="blur"/>
+            <canvas
+                id="wheel"
+                width="600"
+                height="600">
+            </canvas>
 
-<feMerge>
+        </div>
 
-<feMergeNode in="blur"/>
+        <button id="spinButton">
+            Seek Fortuna's Judgment
+        </button>
 
-<feMergeNode in="SourceGraphic"/>
+        <div id="result" class="result">
 
-</feMerge>
+            Lady Fortuna awaits your question...
 
-</filter>
+        </div>
 
-</defs>
-<g id="wheelSlices">
-
-<path d="M250 250 L250 10 A240 240 0 0 1 419 80 Z"
-fill="#8b0000"/>
-
-<path d="M250 250 L419 80 A240 240 0 0 1 490 250 Z"
-fill="#6a0dad"/>
-
-<path d="M250 250 L490 250 A240 240 0 0 1 419 419 Z"
-fill="#b8860b"/>
-
-<path d="M250 250 L419 419 A240 240 0 0 1 250 490 Z"
-fill="#8b0000"/>
-
-<path d="M250 250 L250 490 A240 240 0 0 1 80 419 Z"
-fill="#6a0dad"/>
-
-<path d="M250 250 L80 419 A240 240 0 0 1 10 250 Z"
-fill="#b8860b"/>
-
-<path d="M250 250 L10 250 A240 240 0 0 1 80 80 Z"
-fill="#8b0000"/>
-
-<path d="M250 250 L80 80 A240 240 0 0 1 250 10 Z"
-fill="#6a0dad"/>
-
-</g>
-<circle
-cx="250"
-cy="250"
-r="245"
-fill="none"
-stroke="#ffd700"
-stroke-width="12"
-filter="url(#goldGlow)"
-/>
-<g 
-font-family="Georgia, serif"
-font-size="22"
-fill="#fff"
-text-anchor="middle">
-
-<text x="250" y="65">
-📈 Increase Bet
-</text>
-
-<text x="390" y="170">
-📉 Lower Bet
-</text>
-
-<text x="390" y="340">
-🎯 Keep Same Bet
-</text>
-
-<text x="250" y="450">
-💰 Change Denom
-</text>
-
-<text x="110" y="340">
-🎰 Change Machines
-</text>
-
-<text x="110" y="170">
-👑 Max Bet
-</text>
-
-<text x="170" y="100">
-🪙 Min Bet
-</text>
-
-<text x="330" y="100">
-⚡ Fast Spins
-</text>
-
-</g>
-<circle
-cx="250"
-cy="250"
-r="45"
-fill="#111"
-stroke="#ffd700"
-stroke-width="8"
-/>
-
-<text
-x="250"
-y="258"
-font-size="28"
-fill="#ffd700"
-text-anchor="middle">
-⚜
-</text>
-    </svg>
-
-</div>
-
-</div>
-
-<button id="spinButton">
-Seek Fortuna's Judgment
-</button>
-
-<div id="result" class="result">
-
-⚜ Lady Fortuna Offers Her Blessing ⚜
-
-</div>
+    </main>
 
 </div>
 
