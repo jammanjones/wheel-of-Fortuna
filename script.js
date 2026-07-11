@@ -108,4 +108,4 @@ for (let j = 0; j < lines.length; j++) {
 ctx.restore();
 }
 
-drawWheel();
+drawWheel(); }
