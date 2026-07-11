@@ -35,7 +35,7 @@ const CENTER = 300;
 const RADIUS = 280;
 let rotation = 0;
 function drawWheel() {
-
+let rotation = Math.PI / 4;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 ctx.save();
 
