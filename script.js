@@ -1,96 +1,63 @@
-const wheel = document.getElementById("wheel");
-const spinButton = document.getElementById("spinButton");
+const canvas = document.getElementById("wheel");
+const ctx = canvas.getContext("2d");
 
-let currentRotation = 0;
-const decisions = [
-
-{
-name: "Increase Bet",
-message: "Fortuna invites you to consider a higher wager."
-},
-
-{
-name: "Lower Bet",
-message: "Protect your treasury and consider a smaller wager."
-},
-
-{
-name: "Keep Same Bet (10 Spins)",
-message: "Remain steady and continue for ten spins."
-},
-
-{
-name: "Change Denomination",
-message: "A different path may bring a new perspective."
-},
-
-{
-name: "Change Machines",
-message: "Fortuna calls you to seek a different machine."
-},
-
-{
-name: "Max Bet",
-message: "A bold move awaits those who choose it."
-},
-
-{
-name: "Min Bet",
-message: "Patience and caution have their place."
-},
-
-{
-name: "20 Fast Spins (Min Bet)",
-message: "Spin swiftly with a cautious approach."
-}
-
+const sections = [
+    "Increase Bet",
+    "Lower Bet",
+    "Keep Same Bet\n(10 Spins)",
+    "Change Denomination",
+    "Change Machines",
+    "Max Bet",
+    "Min Bet",
+    "20 Fast Spins\n(Min Bet)"
 ];
-spinButton.addEventListener("click", spinWheel);
 
-function spinWheel(){
+const colors = [
+    "#8B0000",
+    "#6A0DAD",
+    "#B8860B",
+    "#8B0000",
+    "#6A0DAD",
+    "#B8860B",
+    "#8B0000",
+    "#6A0DAD"
+];
 
-    spinButton.disabled = true;
+function drawWheel() {
 
-    let randomSpin = Math.floor(Math.random() * 360) + 1440;
+    const center = 300;
+    const radius = 280;
+    const slice = (Math.PI * 2) / sections.length;
 
-    currentRotation += randomSpin;
+    ctx.clearRect(0, 0, 600, 600);
 
-    wheel.style.transition = "transform 4s ease-out";
+    for (let i = 0; i < sections.length; i++) {
 
-    wheel.style.transform = 
-    `rotate(${currentRotation}deg)`;
+        const start = i * slice;
+        const end = start + slice;
 
+        ctx.beginPath();
+        ctx.moveTo(center, center);
+        ctx.arc(center, center, radius, start, end);
+        ctx.closePath();
 
-setTimeout(() => {
+        ctx.fillStyle = colors[i];
+        ctx.fill();
 
-    spinButton.disabled = false;
+        ctx.strokeStyle = "#FFD700";
+        ctx.lineWidth = 3;
+        ctx.stroke();
+    }
 
-    showDecision();
+    // Gold center
+    ctx.beginPath();
+    ctx.arc(center, center, 40, 0, Math.PI * 2);
+    ctx.fillStyle = "#111";
+    ctx.fill();
 
-},4000);
+    ctx.strokeStyle = "#FFD700";
+    ctx.lineWidth = 6;
+    ctx.stroke();
 }
-function showDecision(){
 
-    let sliceSize = 360 / decisions.length;
-
-    let normalizedRotation = currentRotation % 360;
-
-    let selectedIndex = Math.floor(
-        ((360 - normalizedRotation) % 360) / sliceSize
-    );
-
-
-    let choice = decisions[selectedIndex];
-
-
-    document.getElementById("result").innerHTML =
-
-    `
-    ⚜ Lady Fortuna Has Spoken ⚜
-    <br><br>
-    <strong>${choice.name}</strong>
-    <br><br>
-    ${choice.message}
-    `;
-
-}
+drawWheel();
