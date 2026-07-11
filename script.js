@@ -71,8 +71,16 @@ setTimeout(() => {
 }
 function showDecision(){
 
-    let choice = 
-    decisions[Math.floor(Math.random()*decisions.length)];
+    let sliceSize = 360 / decisions.length;
+
+    let normalizedRotation = currentRotation % 360;
+
+    let selectedIndex = Math.floor(
+        ((360 - normalizedRotation) % 360) / sliceSize
+    );
+
+
+    let choice = decisions[selectedIndex];
 
 
     document.getElementById("result").innerHTML =
@@ -85,4 +93,5 @@ function showDecision(){
     ${choice.message}
     `;
 
+}
 }
