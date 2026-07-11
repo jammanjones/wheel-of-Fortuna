@@ -63,7 +63,7 @@ let speed = 0;
 let spinning = false;
 
 function drawWheel() {
-console.log("Drawing wheel");
+
     ctx.clearRect(0,0,600,600);
 
     ctx.save();
