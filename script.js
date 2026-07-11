@@ -62,15 +62,9 @@ function drawWheel() {
         ctx.save();
 
         ctx.translate(CENTER, CENTER);
-const angle = start + sliceAngle / 2;
+ctx.rotate(start + sliceAngle / 2);
 
-ctx.rotate(angle);
-
-// Keep text upright
-if (angle > Math.PI / 2 && angle < Math.PI * 1.5) {
-    ctx.rotate(Math.PI);
-}
-        ctx.fillStyle = "white";
+ctx.fillStyle = "white";
         ctx.font = "bold 16px Arial";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
@@ -81,7 +75,8 @@ if (angle > Math.PI / 2 && angle < Math.PI * 1.5) {
 
 ctx.fillText(
     lines[j],
-    180,                (j - (lines.length - 1) / 2) * 18
+    RADIUS - 90,
+     (j - (lines.length - 1) / 2) * 18
             );
 
         }
