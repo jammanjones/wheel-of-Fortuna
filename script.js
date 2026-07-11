@@ -33,11 +33,15 @@ const colors = [
 
 const CENTER = 300;
 const RADIUS = 280;
-
+let rotation = 0;
 function drawWheel() {
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+ctx.save();
 
+ctx.translate(CENTER, CENTER);
+ctx.rotate(rotation);
+ctx.translate(-CENTER, -CENTER);
     const sliceAngle = (Math.PI * 2) / decisions.length;
 
     for (let i = 0; i < decisions.length; i++) {
@@ -100,5 +104,5 @@ ctx.fillText(
     ctx.textBaseline = "middle";
     ctx.fillText("⚜", CENTER, CENTER);
 }
-
+ctx.restore();
 drawWheel();
