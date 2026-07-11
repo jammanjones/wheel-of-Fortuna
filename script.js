@@ -1,7 +1,15 @@
+// ================================
+// Lady Fortuna v1.0
+// Part 1 - Draw the Wheel
+// ================================
+
 const canvas = document.getElementById("wheel");
 const ctx = canvas.getContext("2d");
 
-const sections = [
+const spinButton = document.getElementById("spinButton");
+const result = document.getElementById("result");
+
+const decisions = [
     "Increase Bet",
     "Lower Bet",
     "Keep Same Bet\n(10 Spins)",
@@ -17,95 +25,80 @@ const colors = [
     "#6A0DAD",
     "#B8860B",
     "#8B0000",
+    "#8B0000",
     "#6A0DAD",
     "#B8860B",
-    "#8B0000",
     "#6A0DAD"
 ];
 
+const CENTER = 300;
+const RADIUS = 280;
+
 function drawWheel() {
 
-    const center = 300;
-    const radius = 280;
-    const slice = (Math.PI * 2) / sections.length;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.clearRect(0, 0, 600, 600);
+    const sliceAngle = (Math.PI * 2) / decisions.length;
 
-    for (let i = 0; i < sections.length; i++) {
+    for (let i = 0; i < decisions.length; i++) {
 
-        const start = i * slice;
-        const end = start + slice;
+        const start = i * sliceAngle - Math.PI / 2;
+        const end = start + sliceAngle;
 
+        // Draw slice
         ctx.beginPath();
-        ctx.moveTo(center, center);
-        ctx.arc(center, center, radius, start, end);
+        ctx.moveTo(CENTER, CENTER);
+        ctx.arc(CENTER, CENTER, RADIUS, start, end);
         ctx.closePath();
 
         ctx.fillStyle = colors[i];
         ctx.fill();
 
-ctx.strokeStyle = "#FFD700";
-ctx.lineWidth = 3;
-ctx.stroke();
+        ctx.strokeStyle = "#FFD700";
+        ctx.lineWidth = 3;
+        ctx.stroke();
 
+        // Draw text
+        ctx.save();
 
-// Draw label
-ctx.save();
+        ctx.translate(CENTER, CENTER);
+        ctx.rotate(start + sliceAngle / 2);
 
-ctx.translate(center, center);
+        ctx.fillStyle = "white";
+        ctx.font = "bold 16px Arial";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
 
-ctx.rotate(start + slice / 2);
+        const lines = decisions[i].split("\n");
 
-ctx.textAlign = "right";
-ctx.fillStyle = "white";
-ctx.font = "bold 18px Arial";
+        for (let j = 0; j < lines.length; j++) {
 
-const lines = sections[i].split("\n");
+            ctx.fillText(
+                lines[j],
+                RADIUS - 90,
+                (j - (lines.length - 1) / 2) * 18
+            );
 
-for (let j = 0; j < lines.length; j++) {
+        }
 
-    ctx.fillText(
-        lines[j],
-        radius - 30,
-        (j * 20) - ((lines.length - 1) * 10)
-    );
+        ctx.restore();
+    }
 
-}
-
-ctx.restore();
     // Gold center
     ctx.beginPath();
-    ctx.arc(center, center, 40, 0, Math.PI * 2);
+    ctx.arc(CENTER, CENTER, 45, 0, Math.PI * 2);
     ctx.fillStyle = "#111";
     ctx.fill();
 
     ctx.strokeStyle = "#FFD700";
     ctx.lineWidth = 6;
     ctx.stroke();
-    // Draw label
-ctx.save();
 
-ctx.translate(center, center);
-
-ctx.rotate(start + slice / 2);
-
-ctx.textAlign = "right";
-ctx.fillStyle = "white";
-ctx.font = "bold 18px Arial";
-
-const lines = sections[i].split("\n");
-
-for (let j = 0; j < lines.length; j++) {
-
-    ctx.fillText(
-        lines[j],
-        radius - 30,
-        (j * 20) - ((lines.length - 1) * 10)
-    );
-
+    ctx.fillStyle = "#FFD700";
+    ctx.font = "32px serif";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText("⚜", CENTER, CENTER);
 }
 
-ctx.restore();
-}
-
-drawWheel(); }
+drawWheel();
