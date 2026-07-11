@@ -209,4 +209,3 @@ spinButton.addEventListener("click", () => {
 });
 
 drawWheel(); 
-}
