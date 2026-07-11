@@ -30,7 +30,25 @@ Let Fortune Guide Your Next Move
     <div class="pointer">▼</div>
 
     <svg id="wheel" class="wheel" viewBox="0 0 500 500">
+<defs>
 
+<filter id="goldGlow">
+
+<feGaussianBlur
+stdDeviation="5"
+result="blur"/>
+
+<feMerge>
+
+<feMergeNode in="blur"/>
+
+<feMergeNode in="SourceGraphic"/>
+
+</feMerge>
+
+</filter>
+
+</defs>
 <g id="wheelSlices">
 
 <path d="M250 250 L250 10 A240 240 0 0 1 419 80 Z"
@@ -58,6 +76,15 @@ fill="#8b0000"/>
 fill="#6a0dad"/>
 
 </g>
+<circle
+cx="250"
+cy="250"
+r="245"
+fill="none"
+stroke="#ffd700"
+stroke-width="12"
+filter="url(#goldGlow)"
+/>
 <g 
 font-family="Georgia, serif"
 font-size="22"
@@ -97,6 +124,23 @@ text-anchor="middle">
 </text>
 
 </g>
+<circle
+cx="250"
+cy="250"
+r="45"
+fill="#111"
+stroke="#ffd700"
+stroke-width="8"
+/>
+
+<text
+x="250"
+y="258"
+font-size="28"
+fill="#ffd700"
+text-anchor="middle">
+⚜
+</text>
     </svg>
 
 </div>
