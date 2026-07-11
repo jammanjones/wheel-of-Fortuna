@@ -1,123 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Lady Fortuna's Wheel</title>
+<title>Lady Fortuna</title>
 
-<style>
-
-body {
-    margin:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:
-    radial-gradient(circle, #3b2a18, #090909);
-    color:white;
-    font-family:Georgia, serif;
-    text-align:center;
-}
-
-.container {
-    max-width:600px;
-    padding:20px;
-}
-
-h1 {
-    color:#ffd700;
-    font-size:3rem;
-    text-shadow:0 0 15px gold;
-}
-
-.subtitle {
-    color:#d8c4ff;
-    font-size:1.3rem;
-}
-
-.wheel-container {
-    position:relative;
-    margin:40px auto;
-}
-
-.wheel {
-    width:320px;
-    height:320px;
-    border-radius:50%;
-    border:12px solid #ffd700;
-
-    background:
-    conic-gradient(
-    #8b0000 0deg 45deg,
-    #6a0dad 45deg 90deg,
-    #b8860b 90deg 135deg,
-    #8b0000 135deg 180deg,
-    #6a0dad 180deg 225deg,
-    #b8860b 225deg 270deg,
-    #8b0000 270deg 315deg,
-    #6a0dad 315deg 360deg
-    );
-
-    box-shadow:
-    0 0 30px gold,
-    inset 0 0 30px black;
-
-    transition:transform 4s cubic-bezier(.17,.67,.12,.99);
-}
-
-.pointer {
-    width:0;
-    height:0;
-    border-left:20px solid transparent;
-    border-right:20px solid transparent;
-    border-bottom:40px solid gold;
-    margin:auto;
-}
-
-button {
-
-    margin-top:30px;
-    padding:15px 35px;
-    font-size:1.2rem;
-
-    background:#ffd700;
-    color:#111;
-
-    border:none;
-    border-radius:10px;
-
-    cursor:pointer;
-
-    font-weight:bold;
-
-    box-shadow:0 0 15px gold;
-}
-
-button:hover {
-    background:white;
-}
-
-.result {
-
-    margin-top:30px;
-
-    padding:20px;
-
-    border:2px solid gold;
-    border-radius:15px;
-
-    background:rgba(0,0,0,.5);
-
-    font-size:1.3rem;
-
-}
-
-</style>
+<link rel="stylesheet" href="style.css">
 
 </head>
-
 
 <body>
 
@@ -125,10 +17,9 @@ button:hover {
 
 <h1>⚜ Lady Fortuna ⚜</h1>
 
-<div class="subtitle">
-The Goddess of Fortune awaits your question
-</div>
-
+<p class="subtitle">
+Let Fortune Guide Your Next Move
+</p>
 
 <div class="wheel-container">
 
@@ -138,78 +29,19 @@ The Goddess of Fortune awaits your question
 
 </div>
 
-
-<button onclick="spinWheel()">
+<button id="spinButton">
 Seek Fortuna's Judgment
 </button>
 
-
 <div id="result" class="result">
-The wheel awaits...
+
+The Wheel Awaits...
+
 </div>
 
-
 </div>
 
-
-<script>
-
-let fortunes = [
-
-"Fortune smiles upon you. A new opportunity approaches.",
-
-"Beware impatience. Great rewards require patience.",
-
-"Your courage will open a hidden path.",
-
-"The past holds a lesson that will guide your future.",
-
-"An unexpected blessing is approaching.",
-
-"Trust your instincts. Fortuna favors the bold.",
-
-"A difficult choice will reveal your true strength.",
-
-"Great fortune comes to those who prepare."
-
-];
-
-
-let rotation = 0;
-
-
-function spinWheel(){
-
-let wheel=document.getElementById("wheel");
-
-let randomSpin = Math.floor(Math.random()*360)+1440;
-
-rotation += randomSpin;
-
-wheel.style.transform =
-"rotate(" + rotation + "deg)";
-
-
-setTimeout(()=>{
-
-let fortune =
-fortunes[Math.floor(Math.random()*fortunes.length)];
-
-
-document.getElementById("result").innerHTML =
-
-"⚜ Lady Fortuna Has Spoken ⚜<br><br>"
-+ fortune;
-
-
-},4000);
-
-
-}
-
-
-</script>
-
+<script src="script.js"></script>
 
 </body>
 </html>
