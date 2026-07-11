@@ -61,10 +61,28 @@ function spinWheel(){
     `rotate(${currentRotation}deg)`;
 
 
-    setTimeout(() => {
+setTimeout(() => {
 
-        spinButton.disabled = false;
+    spinButton.disabled = false;
 
-    },4000);
+    showDecision();
+
+},4000);
+}
+function showDecision(){
+
+    let choice = 
+    decisions[Math.floor(Math.random()*decisions.length)];
+
+
+    document.getElementById("result").innerHTML =
+
+    `
+    ⚜ Lady Fortuna Has Spoken ⚜
+    <br><br>
+    <strong>${choice.name}</strong>
+    <br><br>
+    ${choice.message}
+    `;
 
 }
