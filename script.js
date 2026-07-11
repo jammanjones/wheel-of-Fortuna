@@ -58,6 +58,30 @@ function drawWheel() {
     ctx.strokeStyle = "#FFD700";
     ctx.lineWidth = 6;
     ctx.stroke();
+    // Draw label
+ctx.save();
+
+ctx.translate(center, center);
+
+ctx.rotate(start + slice / 2);
+
+ctx.textAlign = "right";
+ctx.fillStyle = "white";
+ctx.font = "bold 18px Arial";
+
+const lines = sections[i].split("\n");
+
+for (let j = 0; j < lines.length; j++) {
+
+    ctx.fillText(
+        lines[j],
+        radius - 30,
+        (j * 20) - ((lines.length - 1) * 10)
+    );
+
+}
+
+ctx.restore();
 }
 
 drawWheel();
