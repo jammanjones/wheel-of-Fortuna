@@ -46,13 +46,13 @@ const decisions = [
 
 const colors = [
     "#8B0000",
-    "#6A0DAD",
+    "#020004",
     "#B8860B",
     "#8B0000",
-    "#6A0DAD",
+    "#000000",
     "#B8860B",
     "#8B0000",
-    "#6A0DAD"
+    "#040107"
 ];
 
 const CENTER = 300;
