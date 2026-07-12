@@ -181,8 +181,8 @@ function animate() {
 
         const winner = getWinningIndex();
 
-        showResult(winner);
-
+console.log("Winner index:", winner);
+showResult(winner);
         return;
 
     }
