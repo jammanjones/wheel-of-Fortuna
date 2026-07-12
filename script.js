@@ -23,7 +23,7 @@ const decisions = [
         message: "Stay the course."
     },
     {
-        title: "Change Denomination",
+        title: "Change Denom",
         message: "A different path may reward you."
     },
     {
