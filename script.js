@@ -208,3 +208,22 @@ spinButton.addEventListener("click", () => {
 });
 
 drawWheel();
+const cashAppLink = document.getElementById("cashAppLink");
+
+if (cashAppLink) {
+
+    cashAppLink.addEventListener("click", function (e) {
+
+        e.preventDefault();
+
+        // Try opening the Cash App
+        window.location.href = "cashapp://$fellowshipoffortune";
+
+        // Fallback to the website after a short delay
+        setTimeout(() => {
+            window.location.href = "https://cash.app/$fellowshipoffortune";
+        }, 800);
+
+    });
+
+}
